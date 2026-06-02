@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GribbleWorld &mdash; Birthday HQ</title>
+
+  <!-- Google Fonts: Press Start 2P for pixel headers -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">GribbleWorld</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">[ HOME ]</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Confetti canvas — fixed overlay, activated by JS on LEVEL UP -->
+  <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="bday-main">
+
+    <!-- Page title -->
+    <header class="bday-header">
+      <h1 class="bday-title">Birthday <span class="accent-green">HQ</span></h1>
+      <p class="bday-subtitle">GRAYSON &nbsp;//&nbsp; BORN 06.03.2014</p>
+    </header>
+
+
+    <!-- ========== HUD COUNTDOWN TIMER ==========
+         Styled as an in-game XP stat bar.
+         JS counts down to June 3 2026 and flips to
+         the LEVEL UP screen when the timer hits zero.
+    ================================================ -->
+    <section class="hud" id="hud-section" aria-label="Birthday countdown timer">
+
+      <div class="hud-title">&mdash; TIME UNTIL LEVEL UP &mdash;</div>
+
+      <!-- XP progress bar: fills automatically as the birthday approaches -->
+      <div class="xp-row">
+        <span class="xp-tag">XP</span>
+        <div class="xp-track" role="progressbar" aria-label="XP to level 12">
+          <div class="xp-fill" id="xp-fill"></div>
+        </div>
+        <span class="xp-tag">LVL 12</span>
+      </div>
+
+      <!-- Digit blocks: days / hours / minutes / seconds -->
+      <div class="hud-timer">
+
+        <div class="hud-block">
+          <span class="hud-digits" id="days">00</span>
+          <span class="hud-unit">DAYS</span>
+        </div>
+
+        <span class="hud-colon" aria-hidden="true">:</span>
+
+        <div class="hud-block">
+          <span class="hud-digits" id="hours">00</span>
+          <span class="hud-unit">HRS</span>
+        </div>
+
+        <span class="hud-colon" aria-hidden="true">:</span>
+
+        <div class="hud-block">
+          <span class="hud-digits" id="minutes">00</span>
+          <span class="hud-unit">MIN</span>
+        </div>
+
+        <span class="hud-colon" aria-hidden="true">:</span>
+
+        <div class="hud-block">
+          <span class="hud-digits" id="seconds">00</span>
+          <span class="hud-unit">SEC</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========== LEVEL UP CELEBRATION ==========
+         Hidden by default. JS adds class="active"
+         when the countdown hits zero.
+    ================================================ -->
+    <section
+      class="levelup"
+      id="levelup-section"
+      aria-hidden="true"
+      aria-live="assertive"
+    >
+      <div class="levelup-box">
+        <p class="levelup-badge">&#9889; ACHIEVEMENT UNLOCKED &#9889;</p>
+        <h2 class="levelup-title">LEVEL UP!</h2>
+        <p class="levelup-sub">Grayson has reached</p>
+        <div class="levelup-num">LEVEL 12</div>
+        <p class="levelup-flavor">+1,000 XP &nbsp;&middot;&nbsp; New perks unlocked &nbsp;&middot;&nbsp; You are now older</p>
+      </div>
+    </section>
+
+
+    <!-- ========== BIRTHDAY IMAGE PLACEHOLDER ========== -->
+    <div class="img-placeholder landscape" role="img" aria-label="Birthday photo coming soon">
+      <div class="placeholder-inner">
+        <span class="placeholder-icon" aria-hidden="true">&#9672;</span>
+        <p class="placeholder-label">BIRTHDAY PHOTO<br />COMING SOON</p>
+      </div>
+    </div>
+
+
+    <!-- ========== MISSION BRIEFING PANEL ==========
+         Lorem ipsum styled as a video game quest / mission description.
+    ================================================ -->
+    <section class="mission-panel" aria-label="Mission briefing">
+
+      <div class="mission-header">
+        <span class="mission-icon" aria-hidden="true">&#9876;</span>
+        <h2 class="mission-heading">MISSION BRIEFING</h2>
+        <span class="mission-priority">PRIORITY: LEGENDARY</span>
+      </div>
+
+      <div class="mission-body">
+        <p>
+          Operative, you have been selected for the most critical mission of the year. Intel
+          confirms that Agent Grayson &mdash; code name <strong>Gribble</strong> &mdash; is
+          celebrating a major level milestone. All party personnel are to report to base camp
+          no later than 1600 hours. Provisions, loot drops, and cake have been confirmed.
+          Do not arrive empty-handed.
+        </p>
+        <p>
+          Primary objectives are as follows: secure a perimeter around the snack table,
+          maintain positive team morale at all times, and ensure that the birthday operative
+          receives maximum XP before the event window closes. Side quests include competitive
+          gaming, freestyle dance combat, and a scavenger hunt with uncommon-tier rewards.
+          All participants receive bonus loot upon completion.
+        </p>
+        <p>
+          Be advised &mdash; this is a rare, one-per-year event. Failure to attend will result
+          in a permanent debuff to your social standing and a significant reduction to your
+          overall fun stat. The squad is assembled, the map is loaded, and the respawn counter
+          is ticking. Move out, Operative. Gribble is counting on you.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <p class="footer-text">GribbleWorld &copy; 2026 &nbsp;&nbsp; LVL 12 UNLOCKED</p>
+  </footer>
+
+
+  <!-- ========== COUNTDOWN SCRIPT ==========
+       Counts down to Grayson's 12th birthday: June 3, 2026.
+       - Updates day/hour/min/sec every 1 second
+       - Fills the XP bar as the birthday approaches
+       - Triggers LEVEL UP + confetti when timer hits zero
+  =========================================== -->
+  <script>
+  (function () {
+
+    /* Target: June 3 2026 at midnight, local time. Month is 0-indexed. */
+    var BIRTHDAY      = new Date(2026, 5, 3, 0, 0, 0);
+    /* Previous birthday for XP bar progress calculation (level 11 → 12 window) */
+    var LAST_BIRTHDAY = new Date(2025, 5, 3, 0, 0, 0);
+
+    /* DOM element references */
+    var daysEl         = document.getElementById('days');
+    var hoursEl        = document.getElementById('hours');
+    var minutesEl      = document.getElementById('minutes');
+    var secondsEl      = document.getElementById('seconds');
+    var xpFillEl       = document.getElementById('xp-fill');
+    var hudSection     = document.getElementById('hud-section');
+    var levelupSection = document.getElementById('levelup-section');
+    var confettiCanvas = document.getElementById('confetti-canvas');
+
+    /* Left-pad a number to 2 digits */
+    function pad(n) {
+      return n < 10 ? '0' + n : String(n);
+    }
+
+    /* Fill the XP bar based on how far through the current level year we are */
+    function updateXP() {
+      var now     = Date.now();
+      var total   = BIRTHDAY.getTime() - LAST_BIRTHDAY.getTime();
+      var elapsed = now - LAST_BIRTHDAY.getTime();
+      var pct     = Math.min(100, Math.max(0, (elapsed / total) * 100));
+      xpFillEl.style.width = pct.toFixed(1) + '%';
+    }
+
+    /* Main countdown tick — called once immediately, then every 1 second */
+    function tick() {
+      var diff = BIRTHDAY.getTime() - Date.now();
+
+      if (diff <= 0) {
+        /* Birthday has arrived — stop the interval and celebrate */
+        clearInterval(intervalId);
+        triggerLevelUp();
+        return;
+      }
+
+      var totalSec = Math.floor(diff / 1000);
+      daysEl.textContent    = pad(Math.floor(totalSec / 86400));
+      hoursEl.textContent   = pad(Math.floor((totalSec % 86400) / 3600));
+      minutesEl.textContent = pad(Math.floor((totalSec % 3600)  / 60));
+      secondsEl.textContent = pad(totalSec % 60);
+
+      updateXP();
+    }
+
+    /* Show dramatic all-zeros beat, then reveal the LEVEL UP panel */
+    function triggerLevelUp() {
+      daysEl.textContent    = '00';
+      hoursEl.textContent   = '00';
+      minutesEl.textContent = '00';
+      secondsEl.textContent = '00';
+      xpFillEl.style.width  = '100%';
+
+      setTimeout(function () {
+        hudSection.classList.add('hidden');
+        levelupSection.classList.add('active');
+        levelupSection.setAttribute('aria-hidden', 'false');
+        launchConfetti();
+      }, 1000);
+    }
+
+    /* Canvas-based confetti animation in brand colors */
+    function launchConfetti() {
+      if (!confettiCanvas) return;
+
+      var ctx = confettiCanvas.getContext('2d');
+
+      /* Resize canvas to fill viewport */
+      function resize() {
+        confettiCanvas.width  = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+      confettiCanvas.classList.add('active');
+
+      /* Brand color palette for the confetti pieces */
+      var COLORS = ['#9b59f5', '#ffd700', '#55ff44', '#00e5ff', '#ff4444', '#ffffff', '#5b2d9e'];
+
+      /* Create 220 randomized particles, starting above the visible viewport */
+      var pieces = [];
+      for (var i = 0; i < 220; i++) {
+        pieces.push({
+          x:     Math.random() * confettiCanvas.width,
+          y:     -(Math.random() * confettiCanvas.height * 0.6),
+          w:     Math.random() * 13 + 5,
+          h:     Math.random() * 7  + 3,
+          color: COLORS[Math.floor(Math.random() * COLORS.length)],
+          speed: Math.random() * 3   + 1.5,
+          drift: (Math.random() - 0.5) * 2,
+          angle: Math.random() * Math.PI * 2,
+          spin:  (Math.random() - 0.5) * 0.15,
+        });
+      }
+
+      /* Animation loop — runs until all particles fall below the viewport */
+      var frameId;
+      function draw() {
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        var anyAlive = false;
+
+        for (var j = 0; j < pieces.length; j++) {
+          var p = pieces[j];
+          p.y     += p.speed;
+          p.x     += p.drift;
+          p.angle += p.spin;
+
+          if (p.y < confettiCanvas.height + 30) { anyAlive = true; }
+
+          ctx.save();
+          ctx.globalAlpha = 0.9;
+          ctx.fillStyle   = p.color;
+          ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+          ctx.rotate(p.angle);
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        }
+
+        if (anyAlive) {
+          frameId = requestAnimationFrame(draw);
+        } else {
+          /* All particles gone — hide the canvas */
+          confettiCanvas.classList.remove('active');
+          window.removeEventListener('resize', resize);
+        }
+      }
+
+      draw();
+    }
+
+    /* Boot: run tick immediately so there's no blank flash, then repeat every second */
+    tick();
+    var intervalId = setInterval(tick, 1000);
+
+  }());
+  </script>
+
+</body>
+</html>
